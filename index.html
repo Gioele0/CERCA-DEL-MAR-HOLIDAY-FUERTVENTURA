@@ -1,129 +1,200 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cerca Del Mar Holiday Fuerteventura</title>
-  <meta name="description" content="Cerca Del Mar Holiday Fuerteventura – Appartamenti e ville eleganti sull’isola del sole. Comfort, relax e vista oceano.">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="favicon.ico">
+  <meta name="description" content="Appartamenti e ville a Fuerteventura. Stile mediterraneo, comfort e vista oceano. IT/ES/EN." />
+  <meta name="theme-color" content="#1D9BF0" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme:{ extend:{ colors:{ brand:'#1D9BF0' }}}}
+  </script>
+  <style>body{font-family:'Poppins',sans-serif}</style>
   <script defer src="js/lang.js"></script>
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .flag { width: 24px; height: 16px; cursor: pointer; }
-  </style>
 </head>
 <body class="bg-white text-gray-800">
 
-  <!-- Navbar -->
-  <nav class="flex items-center justify-between p-6 shadow-md bg-white sticky top-0 z-10">
-    <div class="flex items-center space-x-2 text-sky-600 font-bold text-2xl">
-      <span>🌊</span>
-      <span>Cerca Del Mar Holiday</span>
+  <!-- NAV -->
+  <nav class="sticky top-0 z-20 bg-white/90 backdrop-blur border-b">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="./" class="flex items-center gap-2 text-brand font-semibold text-xl">
+        <span>🌊</span><span>Cerca Del Mar Holiday</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#home" class="hover:text-brand" data-lang-key="nav-home">Home</a>
+        <a href="#alloggi" class="hover:text-brand" data-lang-key="nav-alloggi">Alloggi</a>
+        <a href="#recensioni" class="hover:text-brand" data-lang-key="nav-recensioni">Recensioni</a>
+        <a href="#contatto" class="hover:text-brand" data-lang-key="nav-contatto">Contatto</a>
+        <div class="flex items-center gap-2">
+          <button class="px-2 py-1 rounded border hover:bg-gray-100" onclick="setLanguage('it')">🇮🇹</button>
+          <button class="px-2 py-1 rounded border hover:bg-gray-100" onclick="setLanguage('es')">🇪🇸</button>
+          <button class="px-2 py-1 rounded border hover:bg-gray-100" onclick="setLanguage('en')">🇬🇧</button>
+        </div>
+      </div>
+      <button class="md:hidden px-3 py-2 border rounded" onclick="document.getElementById('m').classList.toggle('hidden')">☰</button>
     </div>
-    <div class="flex items-center space-x-6 text-gray-700 font-medium">
-      <a href="#home" class="hover:text-sky-600" data-lang-key="nav-home">Home</a>
-      <a href="#alloggi" class="hover:text-sky-600" data-lang-key="nav-alloggi">Alloggi</a>
-      <a href="#recensioni" class="hover:text-sky-600" data-lang-key="nav-recensioni">Recensioni</a>
-      <a href="#contatto" class="hover:text-sky-600" data-lang-key="nav-contatto">Contatto</a>
-      <div class="flex items-center space-x-2">
-        <img src="https://flagcdn.com/w20/it.png" class="flag" onclick="setLanguage('it')" title="Italiano">
-        <img src="https://flagcdn.com/w20/es.png" class="flag" onclick="setLanguage('es')" title="Español">
-        <img src="https://flagcdn.com/w20/gb.png" class="flag" onclick="setLanguage('en')" title="English">
+    <div id="m" class="md:hidden hidden border-t">
+      <div class="px-4 py-3 flex flex-col gap-3">
+        <a href="#home" class="hover:text-brand" data-lang-key="nav-home">Home</a>
+        <a href="#alloggi" class="hover:text-brand" data-lang-key="nav-alloggi">Alloggi</a>
+        <a href="#recensioni" class="hover:text-brand" data-lang-key="nav-recensioni">Recensioni</a>
+        <a href="#contatto" class="hover:text-brand" data-lang-key="nav-contatto">Contatto</a>
+        <div class="flex gap-2">
+          <button class="px-2 py-1 rounded border" onclick="setLanguage('it')">🇮🇹</button>
+          <button class="px-2 py-1 rounded border" onclick="setLanguage('es')">🇪🇸</button>
+          <button class="px-2 py-1 rounded border" onclick="setLanguage('en')">🇬🇧</button>
+        </div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section id="home" class="relative">
-    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1" alt="Fuerteventura" class="w-full h-[80vh] object-cover">
-    <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white text-center">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4" data-lang-key="hero-title">Vivi la magia di Fuerteventura</h1>
-      <p class="text-lg md:text-xl mb-6" data-lang-key="hero-subtitle">Appartamenti e ville con vista sull’oceano, comfort e relax</p>
-      <a href="#alloggi" class="bg-sky-600 hover:bg-sky-700 text-white px-8 py-3 rounded-full font-semibold" data-lang-key="hero-cta">Scopri le case</a>
-    </div>
-  </section>
-
-  <!-- Alloggi -->
-  <section id="alloggi" class="py-16 px-6 bg-sky-50">
-    <h2 class="text-3xl font-semibold text-center text-sky-800 mb-10" data-lang-key="section-alloggi">I nostri alloggi</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Esempio di card alloggio -->
-      <div class="bg-white shadow rounded-xl overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" class="w-full h-56 object-cover" alt="Appartamento Corralejo">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">Appartamento Corralejo</h3>
-          <p class="text-gray-600 mb-3" data-lang-key="corralejo-desc">Appartamento luminoso vicino alla spiaggia, perfetto per coppie e famiglie.</p>
-          <a href="alloggi/appartamento-corralejo.html" class="text-sky-600 hover:underline font-medium" data-lang-key="details-link">Dettagli →</a>
-        </div>
-      </div>
-      <div class="bg-white shadow rounded-xl overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf" class="w-full h-56 object-cover" alt="Villa Majanicho">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">Villa Majanicho</h3>
-          <p class="text-gray-600 mb-3" data-lang-key="majanicho-desc">Villa con piscina privata, giardino e vista oceano mozzafiato.</p>
-          <a href="alloggi/villa-majanicho.html" class="text-sky-600 hover:underline font-medium" data-lang-key="details-link">Dettagli →</a>
-        </div>
-      </div>
-      <div class="bg-white shadow rounded-xl overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1600585154154-98d82eeccc96" class="w-full h-56 object-cover" alt="Appartamento El Cotillo">
-        <div class="p-4">
-          <h3 class="text-xl font-semibold mb-2">Appartamento El Cotillo</h3>
-          <p class="text-gray-600 mb-3" data-lang-key="cotillo-desc">Vista unica sulle dune e tramonti dorati di Fuerteventura.</p>
-          <a href="alloggi/appartamento-el-cotillo.html" class="text-sky-600 hover:underline font-medium" data-lang-key="details-link">Dettagli →</a>
-        </div>
+    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1920&auto=format&fit=crop" alt="Fuerteventura costa" class="w-full h-[70vh] object-cover">
+    <div class="absolute inset-0 bg-black/40 flex items-center">
+      <div class="max-w-5xl mx-auto px-6 text-white">
+        <h1 class="text-4xl md:text-6xl font-bold mb-3" data-lang-key="hero-title">Vivi la magia di Fuerteventura</h1>
+        <p class="text-lg md:text-xl mb-6" data-lang-key="hero-subtitle">Appartamenti e ville con vista oceano, comfort e relax.</p>
+        <a href="#alloggi" class="inline-block bg-brand hover:bg-sky-600 px-6 py-3 rounded-full font-semibold" data-lang-key="hero-cta">Scopri le case</a>
       </div>
     </div>
   </section>
 
-  <!-- Recensioni -->
-  <section id="recensioni" class="py-16 px-6">
-    <h2 class="text-3xl font-semibold text-center text-sky-800 mb-10" data-lang-key="section-recensioni">Recensioni dei nostri ospiti</h2>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-      <div class="bg-white shadow-md p-6 rounded-lg">
-        <p class="italic mb-4" data-lang-key="review-1">“Posto meraviglioso! Vista mare mozzafiato e personale gentile.”</p>
-        <span class="font-semibold text-sky-700">– Giulia R.</span>
-      </div>
-      <div class="bg-white shadow-md p-6 rounded-lg">
-        <p class="italic mb-4" data-lang-key="review-2">“La villa era perfetta: piscina pulita, atmosfera rilassata e panorama da sogno.”</p>
-        <span class="font-semibold text-sky-700">– Carlos M.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contatto e Prenotazione -->
-  <section id="contatto" class="py-16 px-6 bg-sky-50">
-    <h2 class="text-3xl font-semibold text-center text-sky-800 mb-10" data-lang-key="section-contatto">Contattaci o prenota</h2>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-      <!-- Contatto -->
-      <form class="bg-white shadow-md rounded-xl p-8 space-y-4">
-        <h3 class="text-xl font-semibold mb-4" data-lang-key="form-contatto">Contatto</h3>
-        <input type="text" placeholder="Nome" class="w-full border rounded-md p-3">
-        <input type="email" placeholder="Email" class="w-full border rounded-md p-3">
-        <textarea rows="4" placeholder="Messaggio" class="w-full border rounded-md p-3"></textarea>
-        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-md" data-lang-key="send">Invia</button>
-      </form>
-
-      <!-- Prenotazione -->
-      <form class="bg-white shadow-md rounded-xl p-8 space-y-4">
-        <h3 class="text-xl font-semibold mb-4" data-lang-key="form-prenotazione">Prenotazione</h3>
-        <input type="text" placeholder="Nome e Cognome" class="w-full border rounded-md p-3">
-        <input type="email" placeholder="Email" class="w-full border rounded-md p-3">
-        <div class="grid grid-cols-2 gap-4">
-          <input type="date" class="border rounded-md p-3">
-          <input type="date" class="border rounded-md p-3">
+  <!-- ALLOGGI -->
+  <section id="alloggi" class="py-16 bg-sky-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-semibold text-sky-800 text-center mb-10" data-lang-key="section-alloggi">I nostri alloggi</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 9 cards -->
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Corralejo">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Appartamento Corralejo</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-corralejo">Luminoso, vicino alle spiagge e ai ristoranti locali.</p>
+            <a href="alloggi/appartamento-corralejo.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
         </div>
-        <input type="number" placeholder="Numero di ospiti" class="w-full border rounded-md p-3">
-        <textarea rows="3" placeholder="Richieste speciali" class="w-full border rounded-md p-3"></textarea>
-        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-md" data-lang-key="book">Richiedi prenotazione</button>
-      </form>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1600585154154-98d82eeccc96?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="El Cotillo">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Appartamento El Cotillo</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-cotillo">Lagune tranquille, luce naturale e tramonti dorati.</p>
+            <a href="alloggi/appartamento-el-cotillo.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1600585154207-9c7e3d0a9b43?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Caleta de Fuste">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Appartamento Caleta de Fuste</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-caleta">Terrazza vista mare e piscina condominiale.</p>
+            <a href="alloggi/appartamento-caleta-de-fuste.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Morro Jable">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Appartamento Morro Jable</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-morro">A due passi dal mare e dal centro.</p>
+            <a href="alloggi/appartamento-morro-jable.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Costa Calma">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Appartamento Costa Calma</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-costa">Ampia veranda e atmosfera rilassata.</p>
+            <a href="alloggi/appartamento-costa-calma.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Esquinzo">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Appartamento Esquinzo</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-esquinzo">Romantico, vista oceano e pace.</p>
+            <a href="alloggi/appartamento-esquinzo.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1598300054138-3c56e5417b9b?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Lajares">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Appartamento Lajares</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-lajares">Boho-chic in un borgo artistico.</p>
+            <a href="alloggi/appartamento-lajares.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1600607688964-9659f8dff3d7?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Villa Majanicho">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Villa Majanicho</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-majanicho">Piscina privata e giardino.</p>
+            <a href="alloggi/villa-majanicho.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1598928506311-c55dedb21bd8?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Villa La Oliva">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Villa La Oliva</h3>
+            <p class="text-gray-600 mb-3" data-lang-key="desc-oliva">Eleganza, spazi ampi, vista vulcano.</p>
+            <a href="alloggi/villa-la-oliva.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="text-center py-6 bg-white border-t text-gray-500 text-sm">
-    © 2025 Cerca Del Mar Holiday Fuerteventura — Tutti i diritti riservati
+  <!-- RECENSIONI -->
+  <section id="recensioni" class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-semibold text-sky-800 text-center mb-10" data-lang-key="section-recensioni">Recensioni dei nostri ospiti</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <blockquote class="bg-white p-6 rounded-xl shadow">
+          <p class="italic mb-3" data-lang-key="review-1">“Vista mozzafiato e accoglienza perfetta. Torneremo!”</p>
+          <span class="font-semibold text-brand">— Giulia R.</span>
+        </blockquote>
+        <blockquote class="bg-white p-6 rounded-xl shadow">
+          <p class="italic mb-3" data-lang-key="review-2">“Piscina meravigliosa e casa curata nei dettagli.”</p>
+          <span class="font-semibold text-brand">— Carlos M.</span>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTO / PRENOTAZIONE -->
+  <section id="contatto" class="py-16 bg-sky-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-semibold text-sky-800 text-center mb-10" data-lang-key="section-contatto">Contattaci o prenota</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <form class="bg-white p-8 rounded-xl shadow space-y-4">
+          <h3 class="text-xl font-semibold mb-2" data-lang-key="form-contatto">Contatto</h3>
+          <input class="w-full border rounded p-3" placeholder="Nome" />
+          <input class="w-full border rounded p-3" placeholder="Email" type="email" />
+          <textarea class="w-full border rounded p-3" rows="4" placeholder="Messaggio"></textarea>
+          <button class="w-full bg-brand hover:bg-sky-600 text-white rounded p-3 font-semibold" type="button" data-lang-key="send">Invia</button>
+        </form>
+
+        <form class="bg-white p-8 rounded-xl shadow space-y-4">
+          <h3 class="text-xl font-semibold mb-2" data-lang-key="form-prenotazione">Prenotazione</h3>
+          <input class="w-full border rounded p-3" placeholder="Nome e Cognome" />
+          <input class="w-full border rounded p-3" placeholder="Email" type="email" />
+          <div class="grid grid-cols-2 gap-4">
+            <input class="w-full border rounded p-3" type="date" />
+            <input class="w-full border rounded p-3" type="date" />
+          </div>
+          <input class="w-full border rounded p-3" type="number" placeholder="Numero di ospiti" />
+          <textarea class="w-full border rounded p-3" rows="3" placeholder="Richieste speciali"></textarea>
+          <button class="w-full bg-brand hover:bg-sky-600 text-white rounded p-3 font-semibold" type="button" data-lang-key="book">Richiedi prenotazione</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-6 text-center text-gray-500 text-sm border-t">
+    © 2025 Cerca Del Mar Holiday Fuerteventura
   </footer>
 
 </body>
