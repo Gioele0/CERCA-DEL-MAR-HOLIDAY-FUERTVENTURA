@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Appartamento El Cotillo | Cerca Del Mar Holiday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>body{font-family:'Poppins',sans-serif}</style>
+  <script defer src="../js/lang.js"></script>
+</head><body class="bg-white text-gray-800">
+  <nav class="p-4 shadow flex justify-between items-center">
+    <a href="../index.html" class="text-brand font-semibold">← Home</a>
+    <div class="flex gap-2">
+      <button class="px-2 py-1 border rounded" onclick="setLanguage('it')">🇮🇹</button>
+      <button class="px-2 py-1 border rounded" onclick="setLanguage('es')">🇪🇸</button>
+      <button class="px-2 py-1 border rounded" onclick="setLanguage('en')">🇬🇧</button>
+    </div>
+  </nav>
+  <section class="max-w-5xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-sky-800 mb-3" data-lang-key="p-cotillo-title">Appartamento El Cotillo</h1>
+    <p class="text-gray-600 mb-6" data-lang-key="p-cotillo-desc">Vicino alle lagune, luce naturale e tramonti dorati.</p>
+    <div class="grid md:grid-cols-3 gap-4 mb-6">
+      <img class="rounded-lg h-64 w-full object-cover" src="https://images.unsplash.com/photo-1617098652783-9df04e3a6f75?q=80&w=1200&auto=format&fit=crop">
+      <img class="rounded-lg h-64 w-full object-cover" src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1200&auto=format&fit=crop">
+      <img class="rounded-lg h-64 w-full object-cover" src="https://images.unsplash.com/photo-1580052614034-9b5113f92f5b?q=80&w=1200&auto=format&fit=crop">
+    </div>
+    <iframe class="w-full h-64 rounded" src="https://www.google.com/maps?q=El+Cotillo,Fuerteventura&output=embed"></iframe>
+  </section>
+  <footer class="py-6 text-center text-gray-500 text-sm border-t">© 2025 Cerca Del Mar Holiday</footer>
+  <script>
+    const extra={it:{'p-cotillo-title':'Appartamento El Cotillo','p-cotillo-desc':'Vicino alle lagune, luce naturale e tramonti dorati.'},
+                 es:{'p-cotillo-title':'Apartamento El Cotillo','p-cotillo-desc':'Cerca de las lagunas, luz natural y atardeceres dorados.'},
+                 en:{'p-cotillo-title':'El Cotillo Apartment','p-cotillo-desc':'Near the lagoons, natural light and golden sunsets.'}};
+    (function(){const l=localStorage.getItem('cdm_lang')||'it';document.querySelectorAll('[data-lang-key]').forEach(el=>{const k=el.dataset.langKey;if(extra[l]&&extra[l][k])el.textContent=extra[l][k];});})();
+  </script>
+</body></html>
