@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerca Del Mar Holiday Fuerteventura</title>
+  <meta name="description" content="Cerca Del Mar Holiday Fuerteventura – Appartamenti e ville eleganti sull’isola del sole. Comfort, relax e vista oceano.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="js/lang.js"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .flag { width: 24px; height: 16px; cursor: pointer; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between p-6 shadow-md bg-white sticky top-0 z-10">
+    <div class="flex items-center space-x-2 text-sky-600 font-bold text-2xl">
+      <span>🌊</span>
+      <span>Cerca Del Mar Holiday</span>
+    </div>
+    <div class="flex items-center space-x-6 text-gray-700 font-medium">
+      <a href="#home" class="hover:text-sky-600" data-lang-key="nav-home">Home</a>
+      <a href="#alloggi" class="hover:text-sky-600" data-lang-key="nav-alloggi">Alloggi</a>
+      <a href="#recensioni" class="hover:text-sky-600" data-lang-key="nav-recensioni">Recensioni</a>
+      <a href="#contatto" class="hover:text-sky-600" data-lang-key="nav-contatto">Contatto</a>
+      <div class="flex items-center space-x-2">
+        <img src="https://flagcdn.com/w20/it.png" class="flag" onclick="setLanguage('it')" title="Italiano">
+        <img src="https://flagcdn.com/w20/es.png" class="flag" onclick="setLanguage('es')" title="Español">
+        <img src="https://flagcdn.com/w20/gb.png" class="flag" onclick="setLanguage('en')" title="English">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="relative">
+    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1" alt="Fuerteventura" class="w-full h-[80vh] object-cover">
+    <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4" data-lang-key="hero-title">Vivi la magia di Fuerteventura</h1>
+      <p class="text-lg md:text-xl mb-6" data-lang-key="hero-subtitle">Appartamenti e ville con vista sull’oceano, comfort e relax</p>
+      <a href="#alloggi" class="bg-sky-600 hover:bg-sky-700 text-white px-8 py-3 rounded-full font-semibold" data-lang-key="hero-cta">Scopri le case</a>
+    </div>
+  </section>
+
+  <!-- Alloggi -->
+  <section id="alloggi" class="py-16 px-6 bg-sky-50">
+    <h2 class="text-3xl font-semibold text-center text-sky-800 mb-10" data-lang-key="section-alloggi">I nostri alloggi</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Esempio di card alloggio -->
+      <div class="bg-white shadow rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" class="w-full h-56 object-cover" alt="Appartamento Corralejo">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Appartamento Corralejo</h3>
+          <p class="text-gray-600 mb-3" data-lang-key="corralejo-desc">Appartamento luminoso vicino alla spiaggia, perfetto per coppie e famiglie.</p>
+          <a href="alloggi/appartamento-corralejo.html" class="text-sky-600 hover:underline font-medium" data-lang-key="details-link">Dettagli →</a>
+        </div>
+      </div>
+      <div class="bg-white shadow rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf" class="w-full h-56 object-cover" alt="Villa Majanicho">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Villa Majanicho</h3>
+          <p class="text-gray-600 mb-3" data-lang-key="majanicho-desc">Villa con piscina privata, giardino e vista oceano mozzafiato.</p>
+          <a href="alloggi/villa-majanicho.html" class="text-sky-600 hover:underline font-medium" data-lang-key="details-link">Dettagli →</a>
+        </div>
+      </div>
+      <div class="bg-white shadow rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600585154154-98d82eeccc96" class="w-full h-56 object-cover" alt="Appartamento El Cotillo">
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Appartamento El Cotillo</h3>
+          <p class="text-gray-600 mb-3" data-lang-key="cotillo-desc">Vista unica sulle dune e tramonti dorati di Fuerteventura.</p>
+          <a href="alloggi/appartamento-el-cotillo.html" class="text-sky-600 hover:underline font-medium" data-lang-key="details-link">Dettagli →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recensioni -->
+  <section id="recensioni" class="py-16 px-6">
+    <h2 class="text-3xl font-semibold text-center text-sky-800 mb-10" data-lang-key="section-recensioni">Recensioni dei nostri ospiti</h2>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+      <div class="bg-white shadow-md p-6 rounded-lg">
+        <p class="italic mb-4" data-lang-key="review-1">“Posto meraviglioso! Vista mare mozzafiato e personale gentile.”</p>
+        <span class="font-semibold text-sky-700">– Giulia R.</span>
+      </div>
+      <div class="bg-white shadow-md p-6 rounded-lg">
+        <p class="italic mb-4" data-lang-key="review-2">“La villa era perfetta: piscina pulita, atmosfera rilassata e panorama da sogno.”</p>
+        <span class="font-semibold text-sky-700">– Carlos M.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contatto e Prenotazione -->
+  <section id="contatto" class="py-16 px-6 bg-sky-50">
+    <h2 class="text-3xl font-semibold text-center text-sky-800 mb-10" data-lang-key="section-contatto">Contattaci o prenota</h2>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+      <!-- Contatto -->
+      <form class="bg-white shadow-md rounded-xl p-8 space-y-4">
+        <h3 class="text-xl font-semibold mb-4" data-lang-key="form-contatto">Contatto</h3>
+        <input type="text" placeholder="Nome" class="w-full border rounded-md p-3">
+        <input type="email" placeholder="Email" class="w-full border rounded-md p-3">
+        <textarea rows="4" placeholder="Messaggio" class="w-full border rounded-md p-3"></textarea>
+        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-md" data-lang-key="send">Invia</button>
+      </form>
+
+      <!-- Prenotazione -->
+      <form class="bg-white shadow-md rounded-xl p-8 space-y-4">
+        <h3 class="text-xl font-semibold mb-4" data-lang-key="form-prenotazione">Prenotazione</h3>
+        <input type="text" placeholder="Nome e Cognome" class="w-full border rounded-md p-3">
+        <input type="email" placeholder="Email" class="w-full border rounded-md p-3">
+        <div class="grid grid-cols-2 gap-4">
+          <input type="date" class="border rounded-md p-3">
+          <input type="date" class="border rounded-md p-3">
+        </div>
+        <input type="number" placeholder="Numero di ospiti" class="w-full border rounded-md p-3">
+        <textarea rows="3" placeholder="Richieste speciali" class="w-full border rounded-md p-3"></textarea>
+        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-md" data-lang-key="book">Richiedi prenotazione</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-center py-6 bg-white border-t text-gray-500 text-sm">
+    © 2025 Cerca Del Mar Holiday Fuerteventura — Tutti i diritti riservati
+  </footer>
+
+</body>
+</html>
