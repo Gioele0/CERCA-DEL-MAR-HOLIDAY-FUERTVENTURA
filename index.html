@@ -2,200 +2,1587 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
+  <title>Fuerteventura Stay – Case Vacanze</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cerca Del Mar Holiday Fuerteventura</title>
-  <meta name="description" content="Appartamenti e ville a Fuerteventura. Stile mediterraneo, comfort e vista oceano. IT/ES/EN." />
-  <meta name="theme-color" content="#1D9BF0" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="favicon.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { theme:{ extend:{ colors:{ brand:'#1D9BF0' }}}}
-  </script>
-  <style>body{font-family:'Poppins',sans-serif}</style>
-  <script defer src="js/lang.js"></script>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --primary: #2563eb;
+      --primary-light: #dbeafe;
+      --text: #111827;
+      --muted: #6b7280;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0f2fe, #f5f5f7 45%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    /* HEADER */
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.15s;
+    }
+
+    .nav a:hover { background: rgba(148, 163, 184, 0.15); }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.05s, box-shadow 0.1s;
+    }
+
+    .btn-outline:hover {
+      background: #f9fafb;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .lang-select {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      font-size: 13px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 380px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 11px;
+    }
+
+    .hero-badge {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.07);
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 235, 0.15);
+    }
+
+    .hero-badge.secondary {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.2);
+      color: #047857;
+    }
+
+    .search-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-xl);
+      padding: 14px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .search-rows {
+      display: grid;
+      grid-template-columns: 2.4fr 1.2fr 1.2fr auto;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .search-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .search-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .search-input {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      font-size: 13px;
+      outline: none;
+      background: white;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-size: 13px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 16px 35px rgba(37, 99, 235, 0.45);
+      transition: transform 0.05s, box-shadow 0.1s, filter 0.1s;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-primary span.icon { font-size: 15px; }
+
+    .hero-footer {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-footer img {
+      border-radius: 999px;
+      width: 26px;
+      height: 26px;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 6px 15px rgba(15, 23, 42, 0.3);
+    }
+
+    .hero-footer strong { color: #111827; }
+
+    /* HERO PREVIEW IMAGE */
+
+    .hero-preview {
+      position: relative;
+      height: 230px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: linear-gradient(130deg, #0f172a, #1d4ed8);
+      color: white;
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-preview-main {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.7);
+      transform: scale(1.03);
+    }
+
+    .hero-preview-overlay {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.75);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+    }
+
+    .tag-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
+    }
+
+    .hero-preview-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .hero-preview-title {
+      font-size: 16px;
+      font-weight: 600;
+      text-shadow: 0 8px 18px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-preview-pill {
+      background: rgba(15, 23, 42, 0.78);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .hero-preview-pill strong { font-size: 13px; }
+    .hero-preview-pill span { color: #e5e7eb; font-size: 10px; }
+
+    /* LAYOUT CONTENT */
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 2.4fr);
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    /* FILTRI */
+
+    .filters-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+      position: sticky;
+      top: 12px;
+    }
+
+    .filters-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .filter-group { margin-bottom: 10px; }
+
+    .filter-group label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+
+    .filter-group input,
+    .filter-group select {
+      width: 100%;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      outline: none;
+      background: #f9fafb;
+    }
+
+    .filter-group input:focus,
+    .filter-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+      background: white;
+    }
+
+    .filters-footer {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .btn-ghost {
+      border: none;
+      background: none;
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .btn-ghost:hover { background: #f3f4f6; }
+
+    /* LISTA PROPRIETÀ */
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .results-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .results-count {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .sort-select {
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      background: white;
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    .property-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
+      position: relative;
+    }
+
+    .property-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+      border-color: rgba(37, 99, 235, 0.45);
+    }
+
+    .property-image-wrap {
+      position: relative;
+      height: 160px;
+      overflow: hidden;
+    }
+
+    .property-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .property-card:hover .property-image-wrap img {
+      transform: scale(1.06);
+    }
+
+    .property-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .property-badge span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .property-fav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #fefce8;
+    }
+
+    .property-body {
+      padding: 10px 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .property-location {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #6b7280;
+    }
+
+    .property-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .property-meta {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .property-price {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .property-price strong { font-size: 14px; }
+
+    .property-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .property-rating span.star {
+      font-size: 12px;
+      color: #facc15;
+    }
+
+    .property-cta {
+      font-size: 11px;
+      color: #1d4ed8;
+      font-weight: 500;
+    }
+
+    /* MODALE DETTAGLI */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 50;
+    }
+
+    .modal {
+      max-width: 600px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.35);
+      animation: modal-in 0.2s ease-out;
+    }
+
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(10px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .modal-header h2 { font-size: 16px; }
+
+    .modal-close {
+      border: none;
+      background: none;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      color: #6b7280;
+    }
+
+    .modal-body {
+      padding: 14px 16px 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 14px;
+    }
+
+    .modal-body img {
+      border-radius: 14px;
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .modal-body p {
+      font-size: 13px;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }
+
+    .modal-body .modal-meta {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .modal-body .modal-price {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .modal-form label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+
+    .modal-form input {
+      width: 100%;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      margin-bottom: 6px;
+      outline: none;
+    }
+
+    .modal-form input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+    }
+
+    .modal-footer {
+      padding: 0 16px 14px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .modal-note {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-preview { order: -1; }
+      .content { grid-template-columns: 1fr; }
+      .filters-card { position: static; order: -1; }
+      .search-rows { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .header { flex-direction: column; align-items: flex-start; }
+      .nav { width: 100%; justify-content: space-between; }
+      .search-rows { grid-template-columns: 1fr; }
+      .hero-preview { height: 190px; }
+      .modal-body { grid-template-columns: 1fr; }
+      .header-right { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-800">
-
-  <!-- NAV -->
-  <nav class="sticky top-0 z-20 bg-white/90 backdrop-blur border-b">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="./" class="flex items-center gap-2 text-brand font-semibold text-xl">
-        <span>🌊</span><span>Cerca Del Mar Holiday</span>
-      </a>
-      <div class="hidden md:flex items-center gap-6">
-        <a href="#home" class="hover:text-brand" data-lang-key="nav-home">Home</a>
-        <a href="#alloggi" class="hover:text-brand" data-lang-key="nav-alloggi">Alloggi</a>
-        <a href="#recensioni" class="hover:text-brand" data-lang-key="nav-recensioni">Recensioni</a>
-        <a href="#contatto" class="hover:text-brand" data-lang-key="nav-contatto">Contatto</a>
-        <div class="flex items-center gap-2">
-          <button class="px-2 py-1 rounded border hover:bg-gray-100" onclick="setLanguage('it')">🇮🇹</button>
-          <button class="px-2 py-1 rounded border hover:bg-gray-100" onclick="setLanguage('es')">🇪🇸</button>
-          <button class="px-2 py-1 rounded border hover:bg-gray-100" onclick="setLanguage('en')">🇬🇧</button>
-        </div>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-icon">FV</div>
+        <div class="logo-text">Fuerteventura Stay</div>
       </div>
-      <button class="md:hidden px-3 py-2 border rounded" onclick="document.getElementById('m').classList.toggle('hidden')">☰</button>
-    </div>
-    <div id="m" class="md:hidden hidden border-t">
-      <div class="px-4 py-3 flex flex-col gap-3">
-        <a href="#home" class="hover:text-brand" data-lang-key="nav-home">Home</a>
-        <a href="#alloggi" class="hover:text-brand" data-lang-key="nav-alloggi">Alloggi</a>
-        <a href="#recensioni" class="hover:text-brand" data-lang-key="nav-recensioni">Recensioni</a>
-        <a href="#contatto" class="hover:text-brand" data-lang-key="nav-contatto">Contatto</a>
-        <div class="flex gap-2">
-          <button class="px-2 py-1 rounded border" onclick="setLanguage('it')">🇮🇹</button>
-          <button class="px-2 py-1 rounded border" onclick="setLanguage('es')">🇪🇸</button>
-          <button class="px-2 py-1 rounded border" onclick="setLanguage('en')">🇬🇧</button>
-        </div>
+      <nav class="nav">
+        <a href="#scopri" data-i18n="navDiscover">Scopri</a>
+        <a href="#case" data-i18n="navHomes">Case vacanze</a>
+        <a href="#aiuto" data-i18n="navHelp">Aiuto</a>
+      </nav>
+      <div class="header-right">
+        <select id="lang-switcher" class="lang-select" aria-label="Language">
+          <option value="it">🇮🇹 IT</option>
+          <option value="es">🇪🇸 ES</option>
+          <option value="en">🇬🇧 EN</option>
+          <option value="fr">🇫🇷 FR</option>
+          <option value="de">🇩🇪 DE</option>
+        </select>
+        <button class="btn-outline" data-i18n="ownersArea">Area proprietari</button>
       </div>
-    </div>
-  </nav>
+    </header>
 
-  <!-- HERO -->
-  <section id="home" class="relative">
-    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1920&auto=format&fit=crop" alt="Fuerteventura costa" class="w-full h-[70vh] object-cover">
-    <div class="absolute inset-0 bg-black/40 flex items-center">
-      <div class="max-w-5xl mx-auto px-6 text-white">
-        <h1 class="text-4xl md:text-6xl font-bold mb-3" data-lang-key="hero-title">Vivi la magia di Fuerteventura</h1>
-        <p class="text-lg md:text-xl mb-6" data-lang-key="hero-subtitle">Appartamenti e ville con vista oceano, comfort e relax.</p>
-        <a href="#alloggi" class="inline-block bg-brand hover:bg-sky-600 px-6 py-3 rounded-full font-semibold" data-lang-key="hero-cta">Scopri le case</a>
-      </div>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class="hero" id="scopri">
+      <div>
+        <h1 class="hero-title" data-i18n="heroTitle">
+          Case vacanze selezionate a Fuerteventura.
+        </h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">
+          Prenota appartamenti, ville e case vacanze in tutta Fuerteventura,
+          con assistenza locale e pagamenti sicuri.
+        </p>
+        <div class="hero-badges">
+          <div class="hero-badge" data-i18n="badgeSecurePayments">✅ Pagamenti sicuri</div>
+          <div class="hero-badge secondary" data-i18n="badgeVerifiedGuests">⭐ Ospiti verificati</div>
+          <div class="hero-badge" data-i18n="badgeFlexibleCancel">🕒 Cancellazione flessibile</div>
+        </div>
 
-  <!-- ALLOGGI -->
-  <section id="alloggi" class="py-16 bg-sky-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-semibold text-sky-800 text-center mb-10" data-lang-key="section-alloggi">I nostri alloggi</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- 9 cards -->
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Corralejo">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Appartamento Corralejo</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-corralejo">Luminoso, vicino alle spiagge e ai ristoranti locali.</p>
-            <a href="alloggi/appartamento-corralejo.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+        <div class="search-card">
+          <div class="search-rows">
+            <div class="search-field">
+              <span class="search-label" data-i18n="labelWhere">Dove</span>
+              <input
+                id="search-location"
+                class="search-input"
+                type="text"
+                placeholder="Fuerteventura, Corralejo, El Cotillo…"
+              />
+            </div>
+            <div class="search-field">
+              <span class="search-label" data-i18n="labelCheckin">Check-in</span>
+              <input class="search-input" type="date" />
+            </div>
+            <div class="search-field">
+              <span class="search-label" data-i18n="labelCheckout">Check-out</span>
+              <input class="search-input" type="date" />
+            </div>
+            <button class="btn-primary" id="btn-search">
+              <span class="icon">🔍</span>
+              <span data-i18n="btnSearch">Cerca</span>
+            </button>
           </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1600585154154-98d82eeccc96?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="El Cotillo">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Appartamento El Cotillo</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-cotillo">Lagune tranquille, luce naturale e tramonti dorati.</p>
-            <a href="alloggi/appartamento-el-cotillo.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1600585154207-9c7e3d0a9b43?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Caleta de Fuste">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Appartamento Caleta de Fuste</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-caleta">Terrazza vista mare e piscina condominiale.</p>
-            <a href="alloggi/appartamento-caleta-de-fuste.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Morro Jable">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Appartamento Morro Jable</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-morro">A due passi dal mare e dal centro.</p>
-            <a href="alloggi/appartamento-morro-jable.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Costa Calma">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Appartamento Costa Calma</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-costa">Ampia veranda e atmosfera rilassata.</p>
-            <a href="alloggi/appartamento-costa-calma.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Esquinzo">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Appartamento Esquinzo</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-esquinzo">Romantico, vista oceano e pace.</p>
-            <a href="alloggi/appartamento-esquinzo.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1598300054138-3c56e5417b9b?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Lajares">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Appartamento Lajares</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-lajares">Boho-chic in un borgo artistico.</p>
-            <a href="alloggi/appartamento-lajares.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1600607688964-9659f8dff3d7?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Villa Majanicho">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Villa Majanicho</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-majanicho">Piscina privata e giardino.</p>
-            <a href="alloggi/villa-majanicho.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1598928506311-c55dedb21bd8?q=80&w=1200&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Villa La Oliva">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold">Villa La Oliva</h3>
-            <p class="text-gray-600 mb-3" data-lang-key="desc-oliva">Eleganza, spazi ampi, vista vulcano.</p>
-            <a href="alloggi/villa-la-oliva.html" class="text-brand font-medium" data-lang-key="details-link">Dettagli →</a>
+          <div class="hero-footer">
+            <img
+              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200"
+              alt="Host"
+            />
+            <span data-i18n="heroFooter">
+              Più di <strong>5.000 ospiti</strong> hanno prenotato con noi nell'ultimo anno.
+            </span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- RECENSIONI -->
-  <section id="recensioni" class="py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-semibold text-sky-800 text-center mb-10" data-lang-key="section-recensioni">Recensioni dei nostri ospiti</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <blockquote class="bg-white p-6 rounded-xl shadow">
-          <p class="italic mb-3" data-lang-key="review-1">“Vista mozzafiato e accoglienza perfetta. Torneremo!”</p>
-          <span class="font-semibold text-brand">— Giulia R.</span>
-        </blockquote>
-        <blockquote class="bg-white p-6 rounded-xl shadow">
-          <p class="italic mb-3" data-lang-key="review-2">“Piscina meravigliosa e casa curata nei dettagli.”</p>
-          <span class="font-semibold text-brand">— Carlos M.</span>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATTO / PRENOTAZIONE -->
-  <section id="contatto" class="py-16 bg-sky-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-semibold text-sky-800 text-center mb-10" data-lang-key="section-contatto">Contattaci o prenota</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <form class="bg-white p-8 rounded-xl shadow space-y-4">
-          <h3 class="text-xl font-semibold mb-2" data-lang-key="form-contatto">Contatto</h3>
-          <input class="w-full border rounded p-3" placeholder="Nome" />
-          <input class="w-full border rounded p-3" placeholder="Email" type="email" />
-          <textarea class="w-full border rounded p-3" rows="4" placeholder="Messaggio"></textarea>
-          <button class="w-full bg-brand hover:bg-sky-600 text-white rounded p-3 font-semibold" type="button" data-lang-key="send">Invia</button>
-        </form>
-
-        <form class="bg-white p-8 rounded-xl shadow space-y-4">
-          <h3 class="text-xl font-semibold mb-2" data-lang-key="form-prenotazione">Prenotazione</h3>
-          <input class="w-full border rounded p-3" placeholder="Nome e Cognome" />
-          <input class="w-full border rounded p-3" placeholder="Email" type="email" />
-          <div class="grid grid-cols-2 gap-4">
-            <input class="w-full border rounded p-3" type="date" />
-            <input class="w-full border rounded p-3" type="date" />
+      <div class="hero-preview">
+        <div class="hero-preview-main"></div>
+        <div class="hero-preview-overlay">
+          <div class="tag">
+            <span class="tag-dot"></span>
+            <span data-i18n="tagRealtimeBooking">Prenotazione in tempo reale</span>
           </div>
-          <input class="w-full border rounded p-3" type="number" placeholder="Numero di ospiti" />
-          <textarea class="w-full border rounded p-3" rows="3" placeholder="Richieste speciali"></textarea>
-          <button class="w-full bg-brand hover:bg-sky-600 text-white rounded p-3 font-semibold" type="button" data-lang-key="book">Richiedi prenotazione</button>
-        </form>
+          <div class="hero-preview-bottom">
+            <div>
+              <div class="hero-preview-title">Villa Oceano – Costa Calma</div>
+              <div style="font-size: 12px; opacity: 0.9;">Fuerteventura · Fronte mare</div>
+            </div>
+            <div class="hero-preview-pill">
+              <strong>€145/notte</strong>
+              <span data-i18n="heroPreviewMeta">4 ospiti · 2 camere</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <section class="content" id="case">
+      <!-- FILTRI -->
+      <aside class="filters-card">
+        <div class="filters-title" data-i18n="filtersTitle">Filtri rapidi</div>
+
+        <div class="filter-group">
+          <label for="filter-max-price" data-i18n="filterMaxPrice">Prezzo massimo (€/notte)</label>
+          <input id="filter-max-price" type="number" min="0" placeholder="150" />
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-guests" data-i18n="filterGuests">Ospiti</label>
+          <select id="filter-guests">
+            <option value="" data-i18n="guestsAny">Qualsiasi</option>
+            <option value="2" data-i18n="guests2">Fino a 2 ospiti</option>
+            <option value="4" data-i18n="guests4">Fino a 4 ospiti</option>
+            <option value="6" data-i18n="guests6">Fino a 6 ospiti</option>
+            <option value="7" data-i18n="guests7">Più di 6 ospiti</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-type" data-i18n="filterType">Tipo di alloggio</label>
+          <select id="filter-type">
+            <option value="" data-i18n="typeAll">Tutti</option>
+            <option value="appartamento" data-i18n="typeApartment">Appartamento</option>
+            <option value="villa" data-i18n="typeVilla">Villa</option>
+            <option value="casa" data-i18n="typeHouse">Casa indipendente</option>
+          </select>
+        </div>
+
+        <div class="filters-footer">
+          <button class="btn-primary" style="flex: 1;" id="btn-apply-filters" data-i18n="btnApplyFilters">
+            Applica
+          </button>
+          <button class="btn-ghost" id="btn-reset-filters" data-i18n="btnResetFilters">Azzera</button>
+        </div>
+        <p class="modal-note" data-i18n="filtersHint">
+          Suggerimento: usa il campo “Dove” per cercare una zona specifica di Fuerteventura.
+        </p>
+      </aside>
+
+      <!-- RISULTATI -->
+      <div>
+        <div class="results-header">
+          <div>
+            <div class="results-title" data-i18n="resultsTitle">Case vacanze a Fuerteventura</div>
+            <div class="results-count" id="results-count">3 alloggi trovati</div>
+          </div>
+          <select class="sort-select" id="sort-select">
+            <option value="recommended" data-i18n="sortRecommended">Consigliati</option>
+            <option value="price-asc" data-i18n="sortPriceAsc">Prezzo crescente</option>
+            <option value="price-desc" data-i18n="sortPriceDesc">Prezzo decrescente</option>
+          </select>
+        </div>
+
+        <div class="properties-grid" id="properties-grid">
+          <!-- Fuerteventura CARD 1 -->
+          <article
+            class="property-card"
+            data-location="Fuerteventura Costa Calma"
+            data-price="145"
+            data-guests="4"
+            data-type="villa"
+          >
+            <div class="property-image-wrap">
+              <img
+                src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Villa Oceano"
+              />
+              <div class="property-badge" data-i18n-badge="badgeInstantBooking">
+                <span class="dot"></span>
+                Prenotazione immediata
+              </div>
+              <div class="property-fav">♡</div>
+            </div>
+            <div class="property-body">
+              <div class="property-location">Fuerteventura · Costa Calma</div>
+              <h3 class="property-title">Villa Oceano con piscina privata</h3>
+              <div class="property-meta">
+                <span>4 ospiti · 2 camere · 2 bagni</span>
+                <span>Vista mare</span>
+              </div>
+              <div class="property-price">
+                <div>
+                  <strong>€145</strong> <span style="color: #6b7280;" data-i18n="perNight">/ notte</span>
+                </div>
+                <div class="property-rating">
+                  <span class="star">★</span>
+                  <span>4.9 · 38 recensioni</span>
+                </div>
+              </div>
+              <div class="property-cta" data-i18n="cardCta">Vedi dettagli &amp; prenota →</div>
+            </div>
+          </article>
+
+          <!-- Fuerteventura CARD 2 -->
+          <article
+            class="property-card"
+            data-location="Fuerteventura Corralejo"
+            data-price="95"
+            data-guests="2"
+            data-type="appartamento"
+          >
+            <div class="property-image-wrap">
+              <img
+                src="https://images.pexels.com/photos/2716396/pexels-photo-2716396.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Loft Corralejo"
+              />
+              <div class="property-badge" data-i18n-badge="badgeTopChoice">
+                <span class="dot"></span>
+                Top scelta
+              </div>
+              <div class="property-fav">♡</div>
+            </div>
+            <div class="property-body">
+              <div class="property-location">Fuerteventura · Corralejo</div>
+              <h3 class="property-title">Loft luminoso vicino alle dune</h3>
+              <div class="property-meta">
+                <span>2 ospiti · 1 camera</span>
+                <span>Check-in self-service</span>
+              </div>
+              <div class="property-price">
+                <div>
+                  <strong>€95</strong> <span style="color: #6b7280;" data-i18n="perNight">/ notte</span>
+                </div>
+                <div class="property-rating">
+                  <span class="star">★</span>
+                  <span>4.7 · 54 recensioni</span>
+                </div>
+              </div>
+              <div class="property-cta" data-i18n="cardCta">Vedi dettagli &amp; prenota →</div>
+            </div>
+          </article>
+
+          <!-- Fuerteventura CARD 3 -->
+          <article
+            class="property-card"
+            data-location="Fuerteventura El Cotillo"
+            data-price="180"
+            data-guests="6"
+            data-type="casa"
+          >
+            <div class="property-image-wrap">
+              <img
+                src="https://images.pexels.com/photos/259580/pexels-photo-259580.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Casa El Cotillo"
+              />
+              <div class="property-badge" data-i18n-badge="badgeNew">
+                <span class="dot"></span>
+                Nuova
+              </div>
+              <div class="property-fav">♡</div>
+            </div>
+            <div class="property-body">
+              <div class="property-location">Fuerteventura · El Cotillo</div>
+              <h3 class="property-title">Casa sul mare con giardino</h3>
+              <div class="property-meta">
+                <span>6 ospiti · 3 camere · 2 bagni</span>
+                <span>Parcheggio incluso</span>
+              </div>
+              <div class="property-price">
+                <div>
+                  <strong>€180</strong> <span style="color: #6b7280;" data-i18n="perNight">/ notte</span>
+                </div>
+                <div class="property-rating">
+                  <span class="star">★</span>
+                  <span>4.8 · 22 recensioni</span>
+                </div>
+              </div>
+              <div class="property-cta" data-i18n="cardCta">Vedi dettagli &amp; prenota →</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE AIUTO (SIMPLE) -->
+    <section id="aiuto" style="margin-top: 40px;">
+      <h2 style="font-size: 18px; margin-bottom: 8px;" data-i18n="helpTitle">
+        Hai bisogno di aiuto per trovare la casa giusta?
+      </h2>
+      <p style="font-size: 13px; color: #6b7280; max-width: 560px;" data-i18n="helpText">
+        Scrivici i tuoi bisogni (zona dell’isola, budget, numero di persone) e ti invieremo una selezione di alloggi ideali per te.
+      </p>
+    </section>
+  </div>
+
+  <!-- MODALE DETTAGLI -->
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Titolo alloggio</h2>
+        <button class="modal-close" id="modal-close" aria-label="Chiudi">×</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <img id="modal-image" src="" alt="">
+          <p class="modal-meta" id="modal-meta"></p>
+        </div>
+        <div>
+          <p id="modal-description" data-i18n="modalDescription">
+            Descrizione sintetica dell'alloggio. Qui potrai inserire i dettagli principali,
+            le regole della casa, le dotazioni e tutte le informazioni utili per gli ospiti.
+          </p>
+          <p class="modal-price" id="modal-price"></p>
+
+          <form class="modal-form">
+            <label for="modal-name" data-i18n="formName">Nome</label>
+            <input id="modal-name" type="text" placeholder="Il tuo nome" />
+
+            <label for="modal-email" data-i18n="formEmail">Email</label>
+            <input id="modal-email" type="email" placeholder="nome@email.com" />
+
+            <label for="modal-message" data-i18n="formMessage">Messaggio</label>
+            <input id="modal-message" type="text" placeholder="Richiesta o domanda" />
+          </form>
+          <button class="btn-primary" style="margin-top: 4px; width: 100%;" id="modal-send">
+            <span data-i18n="btnSendRequest">Invia richiesta di prenotazione</span>
+          </button>
+          <p class="modal-note" data-i18n="modalNote">
+            Non viene effettuato nessun pagamento ora. Riceverai conferma e dettagli via email.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-ghost" id="modal-cancel" data-i18n="btnClose">Chiudi</button>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer class="py-6 text-center text-gray-500 text-sm border-t">
-    © 2025 Cerca Del Mar Holiday Fuerteventura
-  </footer>
+  <script>
+    // === TRADUZIONI MULTILINGUA ===
+    const translations = {
+      it: {
+        navDiscover: "Scopri",
+        navHomes: "Case vacanze",
+        navHelp: "Aiuto",
+        ownersArea: "Area proprietari",
+        heroTitle: "Case vacanze selezionate a Fuerteventura.",
+        heroSubtitle:
+          "Prenota appartamenti, ville e case vacanze in tutta Fuerteventura, con assistenza locale e pagamenti sicuri.",
+        badgeSecurePayments: "✅ Pagamenti sicuri",
+        badgeVerifiedGuests: "⭐ Ospiti verificati",
+        badgeFlexibleCancel: "🕒 Cancellazione flessibile",
+        labelWhere: "Dove",
+        labelCheckin: "Check-in",
+        labelCheckout: "Check-out",
+        btnSearch: "Cerca",
+        heroFooter:
+          "Più di <strong>5.000 ospiti</strong> hanno prenotato con noi nell'ultimo anno.",
+        tagRealtimeBooking: "Prenotazione in tempo reale",
+        heroPreviewMeta: "4 ospiti · 2 camere",
+        filtersTitle: "Filtri rapidi",
+        filterMaxPrice: "Prezzo massimo (€/notte)",
+        filterGuests: "Ospiti",
+        filterType: "Tipo di alloggio",
+        guestsAny: "Qualsiasi",
+        guests2: "Fino a 2 ospiti",
+        guests4: "Fino a 4 ospiti",
+        guests6: "Fino a 6 ospiti",
+        guests7: "Più di 6 ospiti",
+        typeAll: "Tutti",
+        typeApartment: "Appartamento",
+        typeVilla: "Villa",
+        typeHouse: "Casa indipendente",
+        btnApplyFilters: "Applica",
+        btnResetFilters: "Azzera",
+        filtersHint:
+          "Suggerimento: usa il campo “Dove” per cercare una zona specifica di Fuerteventura.",
+        resultsTitle: "Case vacanze a Fuerteventura",
+        sortRecommended: "Consigliati",
+        sortPriceAsc: "Prezzo crescente",
+        sortPriceDesc: "Prezzo decrescente",
+        resultsCountSingular: "1 alloggio trovato",
+        resultsCountPlural: "{count} alloggi trovati",
+        badgeInstantBooking: "Prenotazione immediata",
+        badgeTopChoice: "Top scelta",
+        badgeNew: "Nuova",
+        perNight: "/ notte",
+        cardCta: "Vedi dettagli & prenota →",
+        helpTitle: "Hai bisogno di aiuto per trovare la casa giusta?",
+        helpText:
+          "Scrivici i tuoi bisogni (zona dell’isola, budget, numero di persone) e ti invieremo una selezione di alloggi ideali per te.",
+        modalDescription:
+          "Descrizione sintetica dell'alloggio. Qui potrai inserire i dettagli principali, le regole della casa, le dotazioni e tutte le informazioni utili per gli ospiti.",
+        formName: "Nome",
+        formEmail: "Email",
+        formMessage: "Messaggio",
+        btnSendRequest: "Invia richiesta di prenotazione",
+        modalNote:
+          "Non viene effettuato nessun pagamento ora. Riceverai conferma e dettagli via email.",
+        btnClose: "Chiudi",
+        placeholderLocation: "Fuerteventura, Corralejo, El Cotillo…",
+        placeholderName: "Il tuo nome",
+        placeholderEmail: "nome@email.com",
+        placeholderMessage: "Richiesta o domanda"
+      },
+      es: {
+        navDiscover: "Descubre",
+        navHomes: "Alojamientos",
+        navHelp: "Ayuda",
+        ownersArea: "Zona propietarios",
+        heroTitle: "Alojamientos seleccionados en Fuerteventura.",
+        heroSubtitle:
+          "Reserva apartamentos, villas y casas vacacionales en toda Fuerteventura, con asistencia local y pagos seguros.",
+        badgeSecurePayments: "✅ Pagos seguros",
+        badgeVerifiedGuests: "⭐ Huéspedes verificados",
+        badgeFlexibleCancel: "🕒 Cancelación flexible",
+        labelWhere: "Dónde",
+        labelCheckin: "Check-in",
+        labelCheckout: "Check-out",
+        btnSearch: "Buscar",
+        heroFooter:
+          "Más de <strong>5.000 huéspedes</strong> han reservado con nosotros en el último año.",
+        tagRealtimeBooking: "Reserva en tiempo real",
+        heroPreviewMeta: "4 huéspedes · 2 dormitorios",
+        filtersTitle: "Filtros rápidos",
+        filterMaxPrice: "Precio máximo (€/noche)",
+        filterGuests: "Huéspedes",
+        filterType: "Tipo de alojamiento",
+        guestsAny: "Cualquiera",
+        guests2: "Hasta 2 huéspedes",
+        guests4: "Hasta 4 huéspedes",
+        guests6: "Hasta 6 huéspedes",
+        guests7: "Más de 6 huéspedes",
+        typeAll: "Todos",
+        typeApartment: "Apartamento",
+        typeVilla: "Villa",
+        typeHouse: "Casa",
+        btnApplyFilters: "Aplicar",
+        btnResetFilters: "Reiniciar",
+        filtersHint:
+          "Consejo: usa el campo “Dónde” para buscar una zona concreta de Fuerteventura.",
+        resultsTitle: "Alojamientos en Fuerteventura",
+        sortRecommended: "Recomendados",
+        sortPriceAsc: "Precio ascendente",
+        sortPriceDesc: "Precio descendente",
+        resultsCountSingular: "1 alojamiento encontrado",
+        resultsCountPlural: "{count} alojamientos encontrados",
+        badgeInstantBooking: "Reserva inmediata",
+        badgeTopChoice: "Opción destacada",
+        badgeNew: "Nuevo",
+        perNight: "/ noche",
+        cardCta: "Ver detalles y reservar →",
+        helpTitle: "¿Necesitas ayuda para encontrar el alojamiento ideal?",
+        helpText:
+          "Cuéntanos tus necesidades (zona de la isla, presupuesto, número de personas) y te enviaremos una selección hecha a medida.",
+        modalDescription:
+          "Descripción breve del alojamiento. Aquí puedes indicar los detalles principales, normas de la casa, equipamiento e información útil para los huéspedes.",
+        formName: "Nombre",
+        formEmail: "Correo electrónico",
+        formMessage: "Mensaje",
+        btnSendRequest: "Enviar solicitud de reserva",
+        modalNote:
+          "No se realiza ningún pago ahora. Recibirás la confirmación y los detalles por correo electrónico.",
+        btnClose: "Cerrar",
+        placeholderLocation: "Fuerteventura, Corralejo, El Cotillo…",
+        placeholderName: "Tu nombre",
+        placeholderEmail: "nombre@correo.com",
+        placeholderMessage: "Solicitud o pregunta"
+      },
+      en: {
+        navDiscover: "Explore",
+        navHomes: "Holiday homes",
+        navHelp: "Help",
+        ownersArea: "Host area",
+        heroTitle: "Handpicked holiday homes in Fuerteventura.",
+        heroSubtitle:
+          "Book apartments, villas and holiday homes across Fuerteventura with local support and secure payments.",
+        badgeSecurePayments: "✅ Secure payments",
+        badgeVerifiedGuests: "⭐ Verified guests",
+        badgeFlexibleCancel: "🕒 Flexible cancellation",
+        labelWhere: "Where",
+        labelCheckin: "Check-in",
+        labelCheckout: "Check-out",
+        btnSearch: "Search",
+        heroFooter:
+          "More than <strong>5,000 guests</strong> booked with us last year.",
+        tagRealtimeBooking: "Real-time booking",
+        heroPreviewMeta: "4 guests · 2 bedrooms",
+        filtersTitle: "Quick filters",
+        filterMaxPrice: "Max price (€/night)",
+        filterGuests: "Guests",
+        filterType: "Property type",
+        guestsAny: "Any",
+        guests2: "Up to 2 guests",
+        guests4: "Up to 4 guests",
+        guests6: "Up to 6 guests",
+        guests7: "More than 6 guests",
+        typeAll: "All",
+        typeApartment: "Apartment",
+        typeVilla: "Villa",
+        typeHouse: "House",
+        btnApplyFilters: "Apply",
+        btnResetFilters: "Reset",
+        filtersHint:
+          "Tip: use the “Where” field to search a specific area in Fuerteventura.",
+        resultsTitle: "Holiday homes in Fuerteventura",
+        sortRecommended: "Recommended",
+        sortPriceAsc: "Price (low to high)",
+        sortPriceDesc: "Price (high to low)",
+        resultsCountSingular: "1 property found",
+        resultsCountPlural: "{count} properties found",
+        badgeInstantBooking: "Instant booking",
+        badgeTopChoice: "Top pick",
+        badgeNew: "New",
+        perNight: "/ night",
+        cardCta: "View details & book →",
+        helpTitle: "Need help finding the right place?",
+        helpText:
+          "Tell us what you need (area of the island, budget, number of guests) and we’ll send you a tailored selection of homes.",
+        modalDescription:
+          "Short description of the property. Add main features, house rules, amenities and all useful information for your guests.",
+        formName: "Name",
+        formEmail: "Email",
+        formMessage: "Message",
+        btnSendRequest: "Send booking request",
+        modalNote:
+          "No payment is made now. You will receive confirmation and details by email.",
+        btnClose: "Close",
+        placeholderLocation: "Fuerteventura, Corralejo, El Cotillo…",
+        placeholderName: "Your name",
+        placeholderEmail: "name@email.com",
+        placeholderMessage: "Request or question"
+      },
+      fr: {
+        navDiscover: "Découvrir",
+        navHomes: "Locations",
+        navHelp: "Aide",
+        ownersArea: "Espace propriétaires",
+        heroTitle: "Locations de vacances sélectionnées à Fuerteventura.",
+        heroSubtitle:
+          "Réservez appartements, villas et maisons de vacances sur toute Fuerteventura, avec assistance locale et paiements sécurisés.",
+        badgeSecurePayments: "✅ Paiements sécurisés",
+        badgeVerifiedGuests: "⭐ Voyageurs vérifiés",
+        badgeFlexibleCancel: "🕒 Annulation flexible",
+        labelWhere: "Où",
+        labelCheckin: "Arrivée",
+        labelCheckout: "Départ",
+        btnSearch: "Rechercher",
+        heroFooter:
+          "Plus de <strong>5 000 voyageurs</strong> ont réservé avec nous l’an dernier.",
+        tagRealtimeBooking: "Réservation en temps réel",
+        heroPreviewMeta: "4 voyageurs · 2 chambres",
+        filtersTitle: "Filtres rapides",
+        filterMaxPrice: "Prix max (€/nuit)",
+        filterGuests: "Voyageurs",
+        filterType: "Type de logement",
+        guestsAny: "Tous",
+        guests2: "Jusqu’à 2 voyageurs",
+        guests4: "Jusqu’à 4 voyageurs",
+        guests6: "Jusqu’à 6 voyageurs",
+        guests7: "Plus de 6 voyageurs",
+        typeAll: "Tous",
+        typeApartment: "Appartement",
+        typeVilla: "Villa",
+        typeHouse: "Maison",
+        btnApplyFilters: "Appliquer",
+        btnResetFilters: "Réinitialiser",
+        filtersHint:
+          "Astuce : utilisez le champ « Où » pour rechercher une zone précise de Fuerteventura.",
+        resultsTitle: "Locations à Fuerteventura",
+        sortRecommended: "Recommandés",
+        sortPriceAsc: "Prix croissant",
+        sortPriceDesc: "Prix décroissant",
+        resultsCountSingular: "1 logement trouvé",
+        resultsCountPlural: "{count} logements trouvés",
+        badgeInstantBooking: "Réservation immédiate",
+        badgeTopChoice: "Choix préféré",
+        badgeNew: "Nouveau",
+        perNight: "/ nuit",
+        cardCta: "Voir le détail & réserver →",
+        helpTitle: "Besoin d’aide pour trouver le bon logement ?",
+        helpText:
+          "Indiquez-nous vos critères (zone de l’île, budget, nombre de personnes) et nous vous enverrons une sélection sur mesure.",
+        modalDescription:
+          "Description courte du logement. Ajoutez les principaux équipements, règles de la maison et informations utiles pour vos voyageurs.",
+        formName: "Nom",
+        formEmail: "E-mail",
+        formMessage: "Message",
+        btnSendRequest: "Envoyer la demande de réservation",
+        modalNote:
+          "Aucun paiement n’est effectué maintenant. Vous recevrez la confirmation et les détails par e-mail.",
+        btnClose: "Fermer",
+        placeholderLocation: "Fuerteventura, Corralejo, El Cotillo…",
+        placeholderName: "Votre nom",
+        placeholderEmail: "nom@email.com",
+        placeholderMessage: "Demande ou question"
+      },
+      de: {
+        navDiscover: "Entdecken",
+        navHomes: "Ferienhäuser",
+        navHelp: "Hilfe",
+        ownersArea: "Bereich für Vermieter",
+        heroTitle: "Ausgewählte Ferienunterkünfte auf Fuerteventura.",
+        heroSubtitle:
+          "Buche Apartments, Villen und Ferienhäuser auf ganz Fuerteventura – mit lokalem Support und sicheren Zahlungen.",
+        badgeSecurePayments: "✅ Sichere Zahlungen",
+        badgeVerifiedGuests: "⭐ Verifizierte Gäste",
+        badgeFlexibleCancel: "🕒 Flexible Stornierung",
+        labelWhere: "Wo",
+        labelCheckin: "Anreise",
+        labelCheckout: "Abreise",
+        btnSearch: "Suchen",
+        heroFooter:
+          "Über <strong>5.000 Gäste</strong> haben im letzten Jahr bei uns gebucht.",
+        tagRealtimeBooking: "Echtzeit-Buchung",
+        heroPreviewMeta: "4 Gäste · 2 Schlafzimmer",
+        filtersTitle: "Schnellfilter",
+        filterMaxPrice: "Max. Preis (€/Nacht)",
+        filterGuests: "Gäste",
+        filterType: "Unterkunftsart",
+        guestsAny: "Alle",
+        guests2: "Bis zu 2 Gäste",
+        guests4: "Bis zu 4 Gäste",
+        guests6: "Bis zu 6 Gäste",
+        guests7: "Mehr als 6 Gäste",
+        typeAll: "Alle",
+        typeApartment: "Apartment",
+        typeVilla: "Villa",
+        typeHouse: "Haus",
+        btnApplyFilters: "Anwenden",
+        btnResetFilters: "Zurücksetzen",
+        filtersHint:
+          "Tipp: Nutze das Feld „Wo“, um nach einer bestimmten Region auf Fuerteventura zu suchen.",
+        resultsTitle: "Ferienunterkünfte auf Fuerteventura",
+        sortRecommended: "Empfohlen",
+        sortPriceAsc: "Preis aufsteigend",
+        sortPriceDesc: "Preis absteigend",
+        resultsCountSingular: "1 Unterkunft gefunden",
+        resultsCountPlural: "{count} Unterkünfte gefunden",
+        badgeInstantBooking: "Sofortbuchung",
+        badgeTopChoice: "Top Auswahl",
+        badgeNew: "Neu",
+        perNight: "/ Nacht",
+        cardCta: "Details ansehen & buchen →",
+        helpTitle: "Brauchst du Hilfe bei der Suche?",
+        helpText:
+          "Schreibe uns deine Wünsche (Region der Insel, Budget, Personenzahl) und wir senden dir eine passende Auswahl.",
+        modalDescription:
+          "Kurze Beschreibung der Unterkunft. Füge Hauptmerkmale, Hausregeln, Ausstattung und alle wichtigen Infos für deine Gäste hinzu.",
+        formName: "Name",
+        formEmail: "E-Mail",
+        formMessage: "Nachricht",
+        btnSendRequest: "Buchungsanfrage senden",
+        modalNote:
+          "Es wird jetzt keine Zahlung fällig. Du erhältst Bestätigung und Details per E-Mail.",
+        btnClose: "Schließen",
+        placeholderLocation: "Fuerteventura, Corralejo, El Cotillo…",
+        placeholderName: "Dein Name",
+        placeholderEmail: "name@email.com",
+        placeholderMessage: "Anfrage oder Frage"
+      }
+    };
 
+    const langDefault = "it";
+
+    // Applica una lingua all'interfaccia
+    function applyLanguage(lang) {
+      const dict = translations[lang] || translations[langDefault];
+
+      // elementi con data-i18n -> textContent o innerHTML
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        const value = dict[key];
+        if (!value) return;
+        // se contiene tag <strong> usiamo innerHTML
+        if (value.includes("<strong>")) {
+          el.innerHTML = value;
+        } else {
+          el.textContent = value;
+        }
+      });
+
+      // badge nelle card (attributo separato)
+      document.querySelectorAll("[data-i18n-badge]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-badge");
+        const value = dict[key];
+        if (value) el.childNodes[1].nodeValue = " " + value; // dopo il dot
+      });
+
+      // placeholder campi
+      const locationInput = document.getElementById("search-location");
+      if (locationInput && dict.placeholderLocation) {
+        locationInput.placeholder = dict.placeholderLocation;
+      }
+      const nameInput = document.getElementById("modal-name");
+      if (nameInput && dict.placeholderName) {
+        nameInput.placeholder = dict.placeholderName;
+      }
+      const emailInput = document.getElementById("modal-email");
+      if (emailInput && dict.placeholderEmail) {
+        emailInput.placeholder = dict.placeholderEmail;
+      }
+      const msgInput = document.getElementById("modal-message");
+      if (msgInput && dict.placeholderMessage) {
+        msgInput.placeholder = dict.placeholderMessage;
+      }
+
+      // aggiorna label "/ notte" ecc.
+      document.querySelectorAll("[data-i18n='perNight']").forEach((el) => {
+        if (dict.perNight) el.textContent = dict.perNight;
+      });
+
+      // aggiorna conteggio risultati
+      updateResultsCount(currentVisibleCount());
+    }
+
+    function currentVisibleCount() {
+      const cards = Array.from(
+        document.querySelectorAll("#properties-grid .property-card")
+      );
+      return cards.filter((c) => c.style.display !== "none").length;
+    }
+
+    function updateResultsCount(count) {
+      const lang = document.getElementById("lang-switcher").value || langDefault;
+      const dict = translations[lang] || translations[langDefault];
+      const el = document.getElementById("results-count");
+      if (!el) return;
+      if (count === 1) {
+        el.textContent = dict.resultsCountSingular;
+      } else {
+        el.textContent = (dict.resultsCountPlural || "").replace(
+          "{count}",
+          String(count)
+        );
+      }
+    }
+
+    // === FILTRI & ORDINAMENTO ===
+    const propertiesGrid = document.getElementById("properties-grid");
+    const cards = Array.from(propertiesGrid.querySelectorAll(".property-card"));
+
+    const searchLocationInput = document.getElementById("search-location");
+    const filterMaxPriceInput = document.getElementById("filter-max-price");
+    const filterGuestsSelect = document.getElementById("filter-guests");
+    const filterTypeSelect = document.getElementById("filter-type");
+    const btnApplyFilters = document.getElementById("btn-apply-filters");
+    const btnResetFilters = document.getElementById("btn-reset-filters");
+    const btnSearch = document.getElementById("btn-search");
+    const sortSelect = document.getElementById("sort-select");
+
+    function applyFilters() {
+      const searchLocation = searchLocationInput.value.trim().toLowerCase();
+      const maxPrice = parseFloat(filterMaxPriceInput.value);
+      const guestsValue = filterGuestsSelect.value;
+      const typeValue = filterTypeSelect.value;
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const location = card.dataset.location.toLowerCase();
+        const price = parseFloat(card.dataset.price);
+        const guests = parseInt(card.dataset.guests, 10);
+        const type = card.dataset.type;
+
+        let show = true;
+
+        if (searchLocation && !location.includes(searchLocation)) {
+          show = false;
+        }
+
+        if (!Number.isNaN(maxPrice) && price > maxPrice) {
+          show = false;
+        }
+
+        if (guestsValue) {
+          const g = parseInt(guestsValue, 10);
+          if (g === 7) {
+            if (guests <= 6) show = false;
+          } else {
+            if (guests > g) show = false;
+          }
+        }
+
+        if (typeValue && type !== typeValue) {
+          show = false;
+        }
+
+        card.style.display = show ? "" : "none";
+        if (show) visibleCount += 1;
+      });
+
+      updateResultsCount(visibleCount);
+      sortCards(); // mantieni ordine con sort attivo
+    }
+
+    function resetFilters() {
+      searchLocationInput.value = "";
+      filterMaxPriceInput.value = "";
+      filterGuestsSelect.value = "";
+      filterTypeSelect.value = "";
+      sortSelect.value = "recommended";
+      cards.forEach((card) => (card.style.display = ""));
+      cards.forEach((card) => propertiesGrid.appendChild(card));
+      updateResultsCount(cards.length);
+    }
+
+    function sortCards() {
+      const value = sortSelect.value;
+      const visibleCards = cards.filter(
+        (card) => card.style.display !== "none"
+      );
+
+      if (value === "recommended") {
+        cards.forEach((card) => propertiesGrid.appendChild(card));
+        return;
+      }
+
+      visibleCards.sort((a, b) => {
+        const priceA = parseFloat(a.dataset.price);
+        const priceB = parseFloat(b.dataset.price);
+        if (value === "price-asc") return priceA - priceB;
+        return priceB - priceA;
+      });
+
+      visibleCards.forEach((card) => propertiesGrid.appendChild(card));
+    }
+
+    btnApplyFilters.addEventListener("click", applyFilters);
+    btnSearch.addEventListener("click", applyFilters);
+    btnResetFilters.addEventListener("click", resetFilters);
+    sortSelect.addEventListener("change", sortCards);
+
+    // === MODALE DETTAGLI ===
+    const modalBackdrop = document.getElementById("modal-backdrop");
+    const modalTitle = document.getElementById("modal-title");
+    const modalImage = document.getElementById("modal-image");
+    const modalMeta = document.getElementById("modal-meta");
+    const modalPrice = document.getElementById("modal-price");
+    const modalClose = document.getElementById("modal-close");
+    const modalCancel = document.getElementById("modal-cancel");
+
+    function openModalFromCard(card) {
+      const title = card.querySelector(".property-title").textContent;
+      const location = card
+        .querySelector(".property-location")
+        .textContent.trim();
+      const meta = card.querySelector(".property-meta").textContent.trim();
+      const price = card.dataset.price;
+      const imgSrc = card.querySelector("img").src;
+
+      modalTitle.textContent = title;
+      modalImage.src = imgSrc;
+      modalMeta.textContent = location + " · " + meta;
+
+      const lang = document.getElementById("lang-switcher").value || langDefault;
+      const dict = translations[lang] || translations[langDefault];
+      modalPrice.textContent = "€" + price + " " + (dict.perNight || "/ notte");
+
+      modalBackdrop.style.display = "flex";
+      modalBackdrop.setAttribute("aria-hidden", "false");
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => openModalFromCard(card));
+    });
+
+    function closeModal() {
+      modalBackdrop.style.display = "none";
+      modalBackdrop.setAttribute("aria-hidden", "true");
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modalCancel.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (event) => {
+      if (event.target === modalBackdrop) closeModal();
+    });
+
+    // blocca invio finto (per ora solo front-end)
+    document.getElementById("modal-send").addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("Questa è una demo: qui potrai collegare il tuo sistema di prenotazione o email.");
+    });
+
+    // === CAMBIO LINGUA ===
+    const langSwitcher = document.getElementById("lang-switcher");
+    langSwitcher.addEventListener("change", (e) => {
+      applyLanguage(e.target.value);
+    });
+
+    // Inizializzazione
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLanguage(langDefault);
+      updateResultsCount(cards.length);
+    });
+  </script>
 </body>
 </html>
