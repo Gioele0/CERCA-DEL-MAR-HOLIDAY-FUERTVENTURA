@@ -1369,19 +1369,26 @@
       }
     });
 
-    // badge nelle card (evita errori su childNodes)
-    document.querySelectorAll("[data-i18n-badge]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-badge");
-      const value = dict[key];
-      if (!value) return;
-      // prendo l'ultimo nodo di testo dopo il pallino
-      const textNode = Array.from(el.childNodes).find(
-        (n) => n.nodeType === Node.TEXT_NODE
-      );
-      if (textNode) {
-        textNode.nodeValue = " " + value;
-      }
-    });
+   // badge nelle card (testo dentro il badge)
+document.querySelectorAll("[data-i18n-badge]").forEach((el) => {
+  const key = el.getAttribute("data-i18n-badge");
+  const value = dict[key];
+  if (!value) return;
+
+  // prendo il nodo di testo NON vuoto (quello con "Prenotazione immediata", "Top scelta", ecc.)
+  const textNodes = Array.from(el.childNodes).filter(
+    (n) => n.nodeType === Node.TEXT_NODE
+  );
+
+  let textNode =
+    textNodes.find((n) => n.textContent.trim().length > 0) ||
+    textNodes[textNodes.length - 1];
+
+  if (textNode) {
+    textNode.nodeValue = " " + value; // sostituisce il testo, non lo aggiunge
+  }
+});
+
 
     // placeholder campi
     const locationInput = document.getElementById("search-location");
