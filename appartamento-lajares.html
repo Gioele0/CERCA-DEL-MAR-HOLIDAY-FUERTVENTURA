@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Appartamento Lajares | Cerca Del Mar Holiday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>body{font-family:'Poppins',sans-serif}</style>
+  <script defer src="../js/lang.js"></script>
+</head><body class="bg-white text-gray-800">
+  <nav class="p-4 shadow flex justify-between items-center">
+    <a href="../index.html" class="text-brand font-semibold">← Home</a>
+    <div class="flex gap-2">
+      <button class="px-2 py-1 border rounded" onclick="setLanguage('it')">🇮🇹</button>
+      <button class="px-2 py-1 border rounded" onclick="setLanguage('es')">🇪🇸</button>
+      <button class="px-2 py-1 border rounded" onclick="setLanguage('en')">🇬🇧</button>
+    </div>
+  </nav>
+  <section class="max-w-5xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-sky-800 mb-3" data-lang-key="p-lajares-title">Appartamento Lajares</h1>
+    <p class="text-gray-600 mb-6" data-lang-key="p-lajares-desc">Boho-chic in un borgo artistico del nord.</p>
+    <div class="grid md:grid-cols-3 gap-4 mb-6">
+      <img class="rounded-lg h-64 w-full object-cover" src="https://images.unsplash.com/photo-1598300054138-3c56e5417b9b?q=80&w=1200&auto=format&fit=crop">
+      <img class="rounded-lg h-64 w-full object-cover" src="https://images.unsplash.com/photo-1600585154154-98d82eeccc96?q=80&w=1200&auto=format&fit=crop">
+      <img class="rounded-lg h-64 w-full object-cover" src="https://images.unsplash.com/photo-1617098652783-9df04e3a6f75?q=80&w=1200&auto=format&fit=crop">
+    </div>
+    <iframe class="w-full h-64 rounded" src="https://www.google.com/maps?q=Lajares,Fuerteventura&output=embed"></iframe>
+  </section>
+  <footer class="py-6 text-center text-gray-500 text-sm border-t">© 2025 Cerca Del Mar Holiday</footer>
+  <script>
+    const extra={it:{'p-lajares-title':'Appartamento Lajares','p-lajares-desc':'Boho-chic in un borgo artistico del nord.'},
+                 es:{'p-lajares-title':'Apartamento Lajares','p-lajares-desc':'Boho-chic en un pueblo artístico del norte.'},
+                 en:{'p-lajares-title':'Lajares Apartment','p-lajares-desc':'Boho-chic in an artsy northern village.'}};
+    (function(){const l=localStorage.getItem('cdm_lang')||'it';document.querySelectorAll('[data-lang-key]').forEach(el=>{const k=el.dataset.langKey;if(extra[l]&&extra[l][k])el.textContent=extra[l][k];});})();
+  </script>
+</body></html>
